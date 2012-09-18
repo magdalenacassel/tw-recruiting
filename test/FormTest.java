@@ -1,3 +1,6 @@
+import field.DateField;
+import field.SelectField;
+import field.TextField;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;

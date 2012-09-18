@@ -1,3 +1,7 @@
+import field.ClickField;
+import field.DateField;
+import field.SelectField;
+import field.TextField;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -42,5 +46,12 @@ public class FieldTest {
     DateField dateField = new DateField(driver, "calendar", "2020-01-01");
     dateField.enter();
     verify(driver).executeScript("document.getElementByID('calendar').setAttribute('value','2020-01-01')");
+  }
+
+  @Test
+  public void shouldClickOnAllAppropriateButtons() {
+    ClickField clickField = new ClickField(driver, "Full Time", "Part Time");
+    clickField.enter();
+    verify(webElement,times(2)).click();
   }
 }
