@@ -8,5 +8,5 @@ repositories{
 dependencies {
     compile  'org.seleniumhq.selenium:selenium-java:2.23.0',
              'org.seleniumhq.selenium:selenium-firefox-driver:2.23.0',
-            'org.mockito:mockito-all:1.8.4'
+             'org.mockito:mockito-all:1.8.4'
 }
