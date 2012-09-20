@@ -1,20 +1,21 @@
 import field.Field;
+
+import form.Form;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class FileParser implements FormParser {
+public class FileParser  {
     private WebDriver driver;
 
-    private Vector<Form> forms;
+    private LinkedHashMap<String, Form> forms;
     public static final String fileName = "data.csv";
 
     public FileParser(WebDriver driver){
         this.driver = driver;
-        forms = new Vector<Form>();
-        //go();
+        forms = new LinkedHashMap<String,Form>();
     }
 
     private void go() {
@@ -32,7 +33,7 @@ public class FileParser implements FormParser {
     public void doParse(Scanner fileScanner) {
         String currentURL = fileScanner.next().substring(4);
         ArrayList<Field> currentFields = new ArrayList<Field>();
-        FieldParser parser = new LineParser(driver);
+        LineParser parser = new LineParser(driver);
 
         while(fileScanner.hasNext()){
             String line = fileScanner.next();
@@ -40,17 +41,16 @@ public class FileParser implements FormParser {
                 Field field = parser.parse(line);
                 currentFields.add(field);
             } else {
-                forms.add(new Form(currentURL,currentFields));
+                forms.put(currentURL, new Form(currentFields.toArray(new Field[]{})));
                 currentURL = line.substring(4);
                 currentFields = new ArrayList<Field>();
             }
         }
 
-        forms.add(new Form(currentURL,currentFields));
+        forms.put(currentURL,new Form(currentFields.toArray(new Field[]{})));
     }
 
-    @Override
-    public Vector<Form> getForms() {
+    public LinkedHashMap<String,Form> getForms() {
          return forms;
     }
 }

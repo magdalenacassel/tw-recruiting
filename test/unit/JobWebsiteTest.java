@@ -2,7 +2,6 @@ package unit;
 
 import navigation.JobWebsite;
 import field.Field;
-import navigation.JobWebsite;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -14,7 +13,7 @@ import static org.mockito.Mockito.*;
 public class JobWebsiteTest {
 
 
-    public static final String PASSWORD = "foobar";
+    public static final String PASSWORD = "JC10064";
     WebDriver driver;
     JobWebsite jobWebsite;
 
@@ -23,7 +22,7 @@ public class JobWebsiteTest {
     @Before
     public void setUp(){
         driver = mock(WebDriver.class);
-        jobWebsite = new JobWebsite(driver);
+        jobWebsite = new JobWebsite(driver, null);
     }
 
     @Test

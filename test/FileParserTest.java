@@ -1,3 +1,4 @@
+import form.Form;
 import org.junit.Test;
 
 import field.Field;
@@ -25,14 +26,14 @@ public class FileParserTest {
         when(driver.findElement(any(By.class))).thenReturn(mockElement);
 
 
-        FormParser formParser = new FileParser(driver);
+        FileParser formParser = new FileParser(driver);
         String input = "url,url\ntext,id,content\ntext,id,content\nurl,url2\nselect,id,value";
         Scanner scanner = new Scanner(input);
 
         formParser.doParse(scanner);
-        Vector<Form> actual = formParser.getForms();
+        LinkedHashMap<String,Form> actual = formParser.getForms();
 
-        Vector<Form> expected = new Vector<Form>();
+        LinkedHashMap<String,Form> expected = new LinkedHashMap<String, Form>();
         ArrayList<Field> fields = new ArrayList<Field>();
         fields.add(new TextField(driver, "id", "content"));
         fields.add(new TextField(driver, "id", "content"));
@@ -40,8 +41,8 @@ public class FileParserTest {
         ArrayList<Field> fields2 = new ArrayList<Field>();
         fields2.add(new SelectField(driver, "id", "value"));
 
-        expected.add(new Form("url", fields));
-        expected.add(new Form("url2", fields2));
+        expected.put("url",new Form(fields.toArray(new Field[]{})));
+        expected.put("url2",new Form(fields2.toArray(new Field[]{})));
 
         assertEquals(expected, actual);
     }

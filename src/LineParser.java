@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 
-public class LineParser implements FieldParser{
+public class LineParser {
     private WebDriver driver;
     private final static String delimiter = ",";
 

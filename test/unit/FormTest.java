@@ -15,8 +15,8 @@ public class FormTest {
     TextField name = mock(TextField.class);
     DateField expiration = mock(DateField.class);
     SelectField position = mock(SelectField.class);
-    Form form = new Form();
-    form.fillOut(name,expiration,position);
+    Form form = new Form(name,expiration,position);
+    form.fillOut();
     verify(name).enter();
     verify(expiration).enter();
     verify(position).enter();

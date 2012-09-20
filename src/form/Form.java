@@ -3,15 +3,20 @@ package form;
 import field.Field;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Form {
-    private String url;
-    private ArrayList<Field> fields;
+    private Field[] fields;
 
-    public Form(String url, ArrayList<Field> fields) {
-        this.url = url;
+    public Form(Field... fields) {
         this.fields = fields;
+    }
+
+    public void fillOut() {
+        for (Field field : fields) {
+            field.enter();
+        }
     }
 
     @Override
@@ -21,16 +26,13 @@ public class Form {
 
         Form form = (Form) o;
 
-        if (fields != null ? !fields.equals(form.fields) : form.fields != null) return false;
-        if (url != null ? !url.equals(form.url) : form.url != null) return false;
+        if (!Arrays.equals(fields, form.fields)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = url != null ? url.hashCode() : 0;
-        result = 31 * result + (fields != null ? fields.hashCode() : 0);
-        return result;
+        return fields != null ? Arrays.hashCode(fields) : 0;
     }
 }
