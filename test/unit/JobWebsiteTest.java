@@ -1,21 +1,19 @@
 
 package unit;
 
-import navigation.JobWebsite;
 import field.Field;
+import navigation.JobWebsite;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 public class JobWebsiteTest {
 
-    public static final String PASSWORD = "foobar";
+    public static final String PASSWORD = "JC10064";
     WebDriver driver;
     JobWebsite jobWebsite;
 
