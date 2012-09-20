@@ -13,10 +13,6 @@ public class JobWebsite {
         this.driver = driver;
     }
 
-    public void goToPage(String url) {
-        driver.get(url);
-    }
-
     public void login(String url, String username, String password) {
         driver.get(url);
         TextField usernameField = new TextField(driver, "username", username);
