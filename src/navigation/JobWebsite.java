@@ -1,4 +1,4 @@
-package Navigation;
+package navigation;
 
 import field.Field;
 import field.TextField;
@@ -7,15 +7,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class JobWebsite {
-  WebDriver driver;
+    WebDriver driver;
 
-  public JobWebsite(WebDriver driver) {
-    this.driver = driver;
-  }
+    public JobWebsite(WebDriver driver) {
+        this.driver = driver;
+    }
 
-  public void goToPage(String url) {
-    driver.get(url);
-  }
+    public void goToPage(String url) {
+        driver.get(url);
+    }
 
     public void login(String url, String username, String password) {
         driver.get(url);

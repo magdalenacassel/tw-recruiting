@@ -1,9 +1,9 @@
-
+build/reports/*
 .gradle/*
+*.swp
 *.ipr
 *.iws
 *.iml
 *.class
-*.swp
 *.jar
 out/*

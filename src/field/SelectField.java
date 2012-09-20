@@ -7,30 +7,39 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.Arrays;
 
 public class SelectField implements Field {
-  private String[] texts;
-  private Select select;
 
-  public void setSelect(Select select) {
-    this.select = select;
-  }
+    private final WebDriver driver;
+    private final String id;
+    private String[] texts;
+    private Select select = null;
 
-  public SelectField(WebDriver driver, String id, String... texts) {
-    this.texts = texts;
-    select = new Select(driver.findElement(By.id(id)));
-  }
-
-  @Override
-  public void enter() {
-      try {
-          select.deselectAll();
-      } catch (UnsupportedOperationException uoe) {
-          //We don't care.
-      }
-
-    for (String text : texts) {
-      select.selectByValue(text);
+    public void setSelect(Select select) {
+        if (select == null) {
+            this.select = new Select(driver.findElement(By.id(id)));
+        } else {
+            this.select = select;
+        }
     }
-  }
+
+    public SelectField(WebDriver driver, String id, String... texts) {
+        this.driver = driver;
+        this.id = id;
+        this.texts = texts;
+    }
+
+    @Override
+    public void enter() {
+        setSelect(select);
+        try {
+            select.deselectAll();
+        } catch (UnsupportedOperationException uoe) {
+            //We don't care.
+        }
+
+        for (String text : texts) {
+            select.selectByVisibleText(text);
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

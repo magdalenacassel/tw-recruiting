@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 package unit;
 
 import Navigation.JobWebsite;
+=======
+
+package unit;
+
+import navigation.JobWebsite;
+>>>>>>> 4f697b2790ec5a1e32b9851c3679a9bf4e0a6430
 import field.Field;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +21,7 @@ import static org.mockito.Mockito.*;
 
 public class JobWebsiteTest {
 
+<<<<<<< HEAD
     public static final String PASSWORD = "JC10064";
     WebDriver driver;
   JobWebsite jobWebsite;
@@ -23,6 +31,19 @@ public class JobWebsiteTest {
       driver = mock(WebDriver.class);
       jobWebsite = new JobWebsite(driver);
   }
+=======
+    public static final String PASSWORD = "foobar";
+    WebDriver driver;
+    JobWebsite jobWebsite;
+
+    //
+
+    @Before
+    public void setUp(){
+        driver = mock(WebDriver.class);
+        jobWebsite = new JobWebsite(driver);
+    }
+>>>>>>> 4f697b2790ec5a1e32b9851c3679a9bf4e0a6430
 
     @Test
     public void shouldNavigateToLoginPageAndLogin(){
