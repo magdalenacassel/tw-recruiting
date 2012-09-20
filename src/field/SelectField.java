@@ -29,12 +29,7 @@ public class SelectField implements Field {
     @Override
     public void enter() {
         setSelect(select);
-        try {
-            select.deselectAll();
-        } catch (UnsupportedOperationException uoe) {
-            //We don't care.
-        }
-
+        if (select.isMultiple()) select.deselectAll();
         for (String text : texts) {
             select.selectByVisibleText(text);
         }
