@@ -6,6 +6,6 @@
 *.iws
 *.iml
 *.class
-
+.gradle/*
 
 
